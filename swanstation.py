@@ -34,8 +34,11 @@ else:
     
 # stdout - standard output is used to display output directly to the screen console
 # sys.stdout.write() prints text to the console
-# The carriage return '\r' will send the cursor to the beginning of the line, where it can overwrite the existing text.
-# this allows the countdown to continue counting down in place
+# The carriage return '\r' will send the cursor to the beginning of the line, where it 
+# can overwrite the existing text.
+# This allows the countdown to continue counting down in place
+# Otherwise, it will keep printing out an updated countdown 
+# with each iteration. 
 for currentcountdown in range(6480, 0, -1): #108 minutes * 60 seconds = 6480 seconds, no skipping 0, count backwards -1
     sys.stdout.write("\r") 
     sys.stdout.write("{:d} seconds remaining.".format(currentcountdown))   
@@ -43,32 +46,28 @@ for currentcountdown in range(6480, 0, -1): #108 minutes * 60 seconds = 6480 sec
     time.sleep(1)
 
 '''
+How to add colour to terminal game. Need to check the following libraries for suitability. 
+
 print(Fore.RED + "This is red text")
 print(Fore.GREEN + "This is green text")
 print(Style.RESET_ALL + "Back to default text")
 Style.BRIGHT or Style.DIM
+
 pip install termcolor.
 from termcolor import colored
-
 print(colored("This is blue text", "blue"))
 print(colored("This is yellow text on a red background", "yellow", "on_red"))   
 
 import sys
 remaining_seconds = 125  # Example value
 
-minutes = remaining_seconds // 60  # Calculate minutes
-seconds = remaining_seconds % 60    # Calculate leftover seconds
+# need to update timer format for better readability? 
+minutes = remaining_seconds // 60  
+seconds = remaining_seconds % 60   
 
 sys.stdout.write("{:d} minutes and {:02d} seconds remaining.".format(minutes, seconds))
-Explanation:
-remaining_seconds // 60 gives the number of minutes.
-remaining_seconds % 60 gives the remaining seconds.
-{:.2d} formats seconds to always show two digits (e.g., 02 for single-digit seconds like 2).
-This will print something like:
 
-Copy code
 2 minutes and 05 seconds remaining.
-This approach will help you display time in a more readable format for countdowns or timers. Let me know if you need further help!
 
 from blessed import Terminal
 
