@@ -47,24 +47,12 @@ print(Fore.RED + "This is red text")
 print(Fore.GREEN + "This is green text")
 print(Style.RESET_ALL + "Back to default text")
 Style.BRIGHT or Style.DIM
-Installation: Run pip install termcolor.
-Usage:
-python
-Copy code
+pip install termcolor.
 from termcolor import colored
 
 print(colored("This is blue text", "blue"))
 print(colored("This is yellow text on a red background", "yellow", "on_red"))   
 
-
-The {:d} syntax is a format specifier in Python that tells the program to format the value as a decimal integer. In your case, {:d} displays an integer value, which represents the number of seconds remaining.
-
-To display the remaining time as minutes and seconds, you’ll want to calculate the minutes and seconds separately. You can do this by dividing and using the modulo operator.
-
-Here’s how you can update the code to show both minutes and seconds:
-
-python
-Copy code
 import sys
 remaining_seconds = 125  # Example value
 
@@ -91,11 +79,9 @@ print(term.blink("This is blinking text"))
 
 
  Termcolor
-Description: Termcolor is also popular for adding colour to terminal output and pairs well with Colorama.
-Installation: Run pip install termcolor.
+ Run pip install termcolor.
 Usage:
 python
-Copy code
 from termcolor import colored
 
 print(colored("This is blue text", "blue"))
