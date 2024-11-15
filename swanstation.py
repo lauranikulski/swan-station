@@ -42,7 +42,6 @@ for currentcountdown in range(6480, 0, -1): #108 minutes * 60 seconds = 6480 sec
     time.sleep(1)
 
 if currentcountdown and input(): 
-    
     sys.stdout.write("The microcomputer processor is currently disabled. You may only enter the numbers during the last four minutes.")
 '''
 How to add colour to terminal game. 
