@@ -11,6 +11,7 @@ import random # module that generates random numbers
 import time # for all things time operations eg dates, time stamps
 import sys # runtime environment
 from colorama import Fore, Style, init # for styling
+import threading
 
 init()
 
@@ -20,13 +21,13 @@ currentcountdown = 0
     
 correctcode = '4 8 15 16 23 42'
     
-numberstypedbyuser = input("Please enter the correct code here:")
+numberstypedbyuser = input("Please enter the correct code here: ")
 
 # use strip() just in case the user adds a few too many spaces before and after 
 if correctcode.strip() == numberstypedbyuser.strip(): 
-    print("The countdown has been reset for another 108 minutes")
+    print("The countdown has been reset for another 108 minutes.")
 else: 
-    print('The code was incorrect. Self destruction will commence shortly.')
+    print("The code was incorrect. Self destruction will commence shortly.")
     
 # stdout - standard output is used to display output directly to the screen console
 # sys.stdout.write() prints text to the console
@@ -35,14 +36,20 @@ else:
 # This allows the countdown to continue counting down in place
 # Otherwise, it will keep printing out an updated countdown 
 # with each iteration. 
-for currentcountdown in range(6480, 0, -1): #108 minutes * 60 seconds = 6480 seconds, no skipping 0, count backwards -1
-    sys.stdout.write("\r") 
-    sys.stdout.write("{:d} seconds remaining.".format(currentcountdown))   
-    sys.stdout.flush()
-    time.sleep(1)
+currentcountdown = 0
+for currentcountdown in range(6480, 0, -1):  # 108 minutes * 60 seconds = 6480 seconds
+    minutes = currentcountdown // 60  # Calculate minutes without any decimals
+    seconds = currentcountdown % 60   # Calculate seconds. Remainder of a division. 
+    sys.stdout.write("\r")  # Move cursor to the start of the line
+    sys.stdout.write("{:2d}:{:2d} remaining.".format(minutes, seconds))  # Format as mm:ss
+    sys.stdout.flush()  # updates the counter immediately, in place 
+    time.sleep(1) # pause my loop for 1 second to create a real-time countdown effect.
 
-if currentcountdown and input(): 
-    sys.stdout.write("The microcomputer processor is currently disabled. You may only enter the numbers during the last four minutes.")
+#Simple thread handling in Python 
+'''
+https://medium.com/developer-rants/simple-thread-handling-in-python-d6c4bf0cc13c
+'''
+
 '''
 How to add colour to terminal game. 
 print(Fore.RED + "This is red text")
@@ -50,3 +57,5 @@ print(Fore.GREEN + "This is green text")
 print(Style.RESET_ALL + "Back to default text")
 Style.BRIGHT or Style.DIM
 '''
+
+
