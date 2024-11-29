@@ -1,10 +1,7 @@
 # Inspo for this project: # https://theswanstation.net/
-
-# Getting up and running: 
-# type 'pipenv shell', then hit enter in terminal to start virtual environment 
 # cd OneDrive/Desktop/projects/terminalgame in terminal to go to terminal game directory 
+# type 'pipenv shell', then hit enter in terminal to start virtual environment 
 # python3 swanstation.py to run script
-
 # pipenv install <libraryname> eg pipenv install sys in terminal to install libraries in virtual environments
 # colorama for styling https://pypi.org/project/colorama/
 # import those libraries here: 
@@ -12,7 +9,6 @@ import random # module that generates random numbers
 import time # for all things time operations eg dates, time stamps
 import sys # runtime environment
 from colorama import Fore, Style, init # for styling
-import threading
 
 init()
 
@@ -45,5 +41,3 @@ for currentcountdown in range(6480, 0, -1):  # 108 minutes * 60 seconds = 6480 s
     sys.stdout.write(Style.BRIGHT + "{:2d}:{:2d} remaining.".format(minutes, seconds))  # Format as mm:ss
     sys.stdout.flush()  # updates the counter immediately, in place 
     time.sleep(1) # pause my loop for 1 second to create a real-time countdown effect.
-
-
