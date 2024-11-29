@@ -6,6 +6,7 @@
 # python3 swanstation.py to run script
 
 # pipenv install <libraryname> eg pipenv install sys in terminal to install libraries in virtual environments
+# colorama for styling https://pypi.org/project/colorama/
 # import those libraries here: 
 import random # module that generates random numbers 
 import time # for all things time operations eg dates, time stamps
@@ -41,21 +42,8 @@ for currentcountdown in range(6480, 0, -1):  # 108 minutes * 60 seconds = 6480 s
     minutes = currentcountdown // 60  # Calculate minutes without any decimals
     seconds = currentcountdown % 60   # Calculate seconds. Remainder of a division. 
     sys.stdout.write("\r")  # Move cursor to the start of the line
-    sys.stdout.write("{:2d}:{:2d} remaining.".format(minutes, seconds))  # Format as mm:ss
+    sys.stdout.write(Style.BRIGHT + "{:2d}:{:2d} remaining.".format(minutes, seconds))  # Format as mm:ss
     sys.stdout.flush()  # updates the counter immediately, in place 
     time.sleep(1) # pause my loop for 1 second to create a real-time countdown effect.
-
-#Simple thread handling in Python 
-'''
-https://medium.com/developer-rants/simple-thread-handling-in-python-d6c4bf0cc13c
-'''
-
-'''
-How to add colour to terminal game. 
-print(Fore.RED + "This is red text")
-print(Fore.GREEN + "This is green text")
-print(Style.RESET_ALL + "Back to default text")
-Style.BRIGHT or Style.DIM
-'''
 
 
